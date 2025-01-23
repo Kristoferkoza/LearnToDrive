@@ -1,47 +1,22 @@
-import { Column, Entity, JoinTable, ManyToMany, OneToOne, PrimaryGeneratedColumn } from 'typeorm';
-import { RefreshTokenId } from '../../iam/authentication/entities/refresh-token-id.entity';
-import { Role } from '../../roles/entities/role.entity';
+import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-@Entity({ name: 'users' })
+@Entity('users')
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column()
-  name: string;
+  firstName: string;
 
   @Column()
-  surname: string;
+  lastName: string;
 
   @Column()
   age: number;
 
   @Column({ unique: true })
-  login: string;
+  email: string;
 
   @Column()
   password: string;
-
-  @Column()
-  phoneNumber: string;
-
-  @Column({ default: true })
-  isActive: boolean;
-
-  @OneToOne(() => RefreshTokenId, (refreshToken) => refreshToken.user)
-  refreshTokenId: RefreshTokenId;
-
-  @ManyToMany(() => Role, (role) => role.users)
-  @JoinTable({
-    name: 'users_roles',
-    joinColumn: {
-      name: 'user_id',
-      referencedColumnName: 'id',
-    },
-    inverseJoinColumn: {
-      name: 'role_id',
-      referencedColumnName: 'id',
-    },
-  })
-  roles: Role[];
 }

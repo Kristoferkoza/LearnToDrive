@@ -86,7 +86,11 @@
       "e2eTestRunner": "cypress",
       "linter": "eslint",
       "style": "scss",
-      "unitTestRunner": "jest"
+      "unitTestRunner": "jest",
+      "skipTests": "true"
+    },
+    "@nx/angular:component": {
+      "style": "scss"
     }
   }
 }

@@ -2,12 +2,9 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UsersModule } from './users/users.module';
 import { getMetadataArgsStorage } from 'typeorm';
-import { IamModule } from './iam/iam.module';
-import { ConfigModule, ConfigService } from '@nestjs/config'
-import { RolesModule } from './roles/roles.module';
-import { PermissionsModule } from './permissions/permissions.module';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -25,11 +22,8 @@ import { PermissionsModule } from './permissions/permissions.module';
       }),
       inject: [ConfigService],
     }),
-    UsersModule,
-    IamModule,
-    RolesModule,
-    PermissionsModule,
     ConfigModule.forRoot(),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],

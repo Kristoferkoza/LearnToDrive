@@ -30,6 +30,7 @@
     "rxjs": "~7.8.0",
     "swagger": "^0.7.5",
     "typeorm": "^0.3.20",
+    "uuid": "^11.0.5",
     "zone.js": "~0.15.0"
   },
   "devDependencies": {
@@ -59,7 +60,7 @@
     "@swc/helpers": "~0.5.11",
     "@types/bcrypt": "^5.0.2",
     "@types/jest": "^29.5.12",
-    "@types/node": "18.16.9",
+    "@types/node": "^18.16.9",
     "@typescript-eslint/utils": "^8.13.0",
     "angular-eslint": "^19.0.2",
     "cypress": "^13.13.0",
