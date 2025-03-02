@@ -6,14 +6,8 @@ import cookieParser from 'cookie-parser';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.useGlobalPipes(
-    new ValidationPipe({
-      transformOptions: {
-        enableImplicitConversion: true,
-      },
-    }),
+    new ValidationPipe(),
   );
-
-  app.use(cookieParser());
 
   // app.useGlobalInterceptors(new HidePasswordInterceptor());
   const port = process.env.PORT || 3000;

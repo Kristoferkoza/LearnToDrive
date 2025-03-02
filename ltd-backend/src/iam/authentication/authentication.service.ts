@@ -8,7 +8,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { User } from '../../users/entities/user.entity';
 import { HashingService } from '../hashing/hashing.service';
-import { SignInDto } from './dto/sign-in.dto';
+import { LoginDto } from './dto/sign-in.dto';
 import { SignUpDto } from './dto/sign-up.dto';
 import { JwtService } from '@nestjs/jwt';
 import jwtConfig from '../config/jwt.config';
@@ -42,15 +42,15 @@ export class AuthenticationService {
     }
   }
 
-  async signIn(signInDto: SignInDto) {
+  async login(loginDto: LoginDto) {
     const user = await this.usersRepository.findOneBy({
-      email: signInDto.email,
+      email: loginDto.email,
     });
     if (!user) {
       throw new UnauthorizedException('User does not exists');
     }
     const isEqual = await this.hashingService.compare(
-      signInDto.password,
+      loginDto.password,
       user.password,
     );
     if (!isEqual) {
