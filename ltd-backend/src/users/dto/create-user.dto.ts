@@ -1,5 +1,6 @@
 import {
   IsBoolean,
+  IsEmail,
   IsNumber,
   IsString,
   Matches,
@@ -8,8 +9,8 @@ import {
 } from 'class-validator';
 
 export class CreateUserDto {
-  @IsString()
-  login: string;
+  @IsEmail()
+  email: string;
 
   @IsString()
   @MinLength(8)
@@ -24,6 +25,9 @@ export class CreateUserDto {
 
   @IsString()
   surname: string;
+
+  @IsString()
+  phoneNumber: string;
 
   @IsNumber()
   age: number;

@@ -3,7 +3,7 @@ import { IsString, IsBoolean, IsOptional, IsNumber } from 'class-validator';
 export class UpdateUserDto {
     @IsString()
     @IsOptional()
-    login?: string;
+    email?: string;
     
     @IsString()
     @IsOptional()
@@ -12,6 +12,10 @@ export class UpdateUserDto {
     @IsString()
     @IsOptional()
     surname?: string;
+
+    @IsString()
+    @IsOptional()
+    phoneNumber?: string;
 
     @IsNumber()
     @IsOptional()
